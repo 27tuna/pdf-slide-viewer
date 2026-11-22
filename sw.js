@@ -1,4 +1,4 @@
-const CACHE='pdf-slide-viewer-v1';
+const CACHE='pdf-slide-viewer-font-test-v3';
 const ASSETS=['./','./index.html','./manifest.webmanifest','https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js','https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'];
 self.addEventListener('install', event => {event.waitUntil(caches.open(CACHE).then(async cache => {await cache.addAll(['./','./index.html','./manifest.webmanifest']); await Promise.allSettled(ASSETS.slice(3).map(url=>cache.add(url)));}).then(()=>self.skipWaiting()));});
 self.addEventListener('activate', event => {event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});

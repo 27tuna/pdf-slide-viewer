@@ -62,7 +62,14 @@
         try {
           pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
           const data = await file.arrayBuffer();
-          const loaded = await pdfjsLib.getDocument({data}).promise;
+          const loaded = await pdfjsLib.getDocument({
+            data,
+            cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+            cMapPacked: true,
+            standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/',
+            useSystemFonts: true,
+            disableFontFace: true
+          }).promise;
           pdf=loaded; current=1; pending=null; start.style.display='none';
           await render(1);
         } catch(e) { start.style.display='flex'; error.textContent='PDFを開けませんでした。別のPDFで試してください。'; console.error(e); }
