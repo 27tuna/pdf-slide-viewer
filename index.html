@@ -67,8 +67,8 @@
             cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
             cMapPacked: true,
             standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/',
-            useSystemFonts: true,
-            disableFontFace: true
+            useSystemFonts: false,
+            disableFontFace: false
           }).promise;
           pdf=loaded; current=1; pending=null; start.style.display='none';
           await render(1);
